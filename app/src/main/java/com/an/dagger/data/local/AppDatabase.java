@@ -1,7 +1,7 @@
 package com.an.dagger.data.local;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 import com.an.dagger.data.local.dao.MovieDao;
 import com.an.dagger.data.local.entity.MovieEntity;
 

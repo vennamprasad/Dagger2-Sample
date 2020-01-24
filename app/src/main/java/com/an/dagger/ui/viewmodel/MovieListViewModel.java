@@ -1,7 +1,7 @@
 package com.an.dagger.ui.viewmodel;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.an.dagger.data.Resource;
 import com.an.dagger.data.local.dao.MovieDao;

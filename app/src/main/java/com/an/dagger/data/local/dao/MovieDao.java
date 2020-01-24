@@ -1,9 +1,9 @@
 package com.an.dagger.data.local.dao;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 import com.an.dagger.data.local.entity.MovieEntity;
 import java.util.List;
 
@@ -11,8 +11,8 @@ import java.util.List;
 public interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long[] insertMovies(List<MovieEntity> movies);
+    void insertMovies(List<MovieEntity> movies);
 
-    @Query("SELECT * FROM `MovieEntity`")
+    @Query("SELECT * FROM 'MovieEntity'")
     List<MovieEntity> getMoviesByPage();
 }

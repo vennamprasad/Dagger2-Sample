@@ -1,7 +1,7 @@
 package com.an.dagger.data.repository;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.an.dagger.data.NetworkBoundResource;
 import com.an.dagger.data.Resource;

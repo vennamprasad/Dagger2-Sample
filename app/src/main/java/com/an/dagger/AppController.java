@@ -1,14 +1,14 @@
 package com.an.dagger;
 
-import android.app.Activity;
 import android.app.Application;
 
 import com.an.dagger.di.component.DaggerAppComponent;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
+import dagger.android.HasAndroidInjector;
 
 
 /*
@@ -17,15 +17,10 @@ import dagger.android.HasActivityInjector;
  * This way a DispatchingAndroidInjector is injected which is
  * then returned when an injector for an activity is requested.
  * */
-public class AppController extends Application implements HasActivityInjector {
+public class AppController extends Application implements HasAndroidInjector {
 
     @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
-
-    @Override
-    public DispatchingAndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
-    }
+    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
@@ -33,6 +28,11 @@ public class AppController extends Application implements HasActivityInjector {
         DaggerAppComponent.builder()
                 .application(this)
                 .build()
-            .inject(this);
+                .inject(this);
+    }
+
+    @Override
+    public AndroidInjector<Object> androidInjector() {
+        return dispatchingAndroidInjector;
     }
 }

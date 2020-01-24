@@ -1,7 +1,7 @@
 package com.an.dagger.ui.custom;
 
 import android.content.Context;
-import android.support.design.card.MaterialCardView;
+import com.google.android.material.card.MaterialCardView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 

@@ -1,8 +1,8 @@
 package com.an.dagger.di.module;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
-import android.support.annotation.NonNull;
+import androidx.room.Room;
+import androidx.annotation.NonNull;
 
 import com.an.dagger.data.local.AppDatabase;
 import com.an.dagger.data.local.dao.MovieDao;

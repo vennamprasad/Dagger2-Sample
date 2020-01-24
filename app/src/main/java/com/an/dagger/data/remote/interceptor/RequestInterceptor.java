@@ -2,6 +2,8 @@ package com.an.dagger.data.remote.interceptor;
 
 import com.an.dagger.BuildConfig;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -10,6 +12,7 @@ import okhttp3.Response;
 
 public class RequestInterceptor implements Interceptor {
 
+    @NotNull
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request originalRequest = chain.request();

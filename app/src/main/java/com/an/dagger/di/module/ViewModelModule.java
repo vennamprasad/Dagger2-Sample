@@ -1,7 +1,7 @@
 package com.an.dagger.di.module;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.an.dagger.di.ViewModelKey;
 import com.an.dagger.factory.ViewModelFactory;
