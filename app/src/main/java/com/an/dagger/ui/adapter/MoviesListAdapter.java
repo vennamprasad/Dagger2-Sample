@@ -30,8 +30,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Cu
     public MoviesListAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         MoviesListItemBinding itemBinding = MoviesListItemBinding.inflate(layoutInflater, parent, false);
-        CustomViewHolder viewHolder = new CustomViewHolder(itemBinding);
-        return viewHolder;
+        return new CustomViewHolder(itemBinding);
     }
 
     public void setItems(List<MovieEntity> movies) {
@@ -54,12 +53,12 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Cu
         holder.bindTo(getItem(position));
     }
 
-    protected class CustomViewHolder extends RecyclerView.ViewHolder {
+    class CustomViewHolder extends RecyclerView.ViewHolder {
 
         private MoviesListItemBinding binding;
 
-        public CustomViewHolder(MoviesListItemBinding binding) {
-            super(binding.getRoot());
+        CustomViewHolder(MoviesListItemBinding binding) {
+            super(binding.image);
             this.binding = binding;
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -70,7 +69,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Cu
                     RecyclerView.LayoutParams.WRAP_CONTENT));
         }
 
-        public void bindTo(MovieEntity movie) {
+        void bindTo(MovieEntity movie) {
             Picasso.get().load(movie.getPosterPath())
                     .placeholder(R.drawable.ic_placeholder)
                     .into(binding.image);

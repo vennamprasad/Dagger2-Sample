@@ -27,9 +27,6 @@ public class BackgroundSwitcherView extends ImageSwitcher {
     private Animation bgImageInRightAnimation;
     private Animation bgImageOutRightAnimation;
 
-    private int movementDuration = 500;
-    private int widthBackgroundImageGapPercent = 12;
-
     private AnimationDirection currentAnimationDirection;
 
     public BackgroundSwitcherView(Context context, AttributeSet attrs) {
@@ -45,6 +42,7 @@ public class BackgroundSwitcherView extends ImageSwitcher {
     private void inflateAndInit(final Context context) {
         setChildrenDrawingOrderEnabled(true);
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int widthBackgroundImageGapPercent = 12;
         bgImageGap = (displayMetrics.widthPixels / 100) * widthBackgroundImageGapPercent;
         bgImageWidth = displayMetrics.widthPixels + bgImageGap * 2;
 
@@ -56,6 +54,7 @@ public class BackgroundSwitcherView extends ImageSwitcher {
             return myView;
         });
 
+        int movementDuration = 500;
         bgImageInLeftAnimation = AnimUtils.createBgImageInAnimation(bgImageGap, 0, movementDuration);
         bgImageOutLeftAnimation = AnimUtils.createBgImageOutAnimation(0, -bgImageGap, movementDuration);
         bgImageInRightAnimation = AnimUtils.createBgImageInAnimation(-bgImageGap, 0, movementDuration);
@@ -82,7 +81,6 @@ public class BackgroundSwitcherView extends ImageSwitcher {
     }
 
 
-
     public void updateCurrentBackground(String imageUrl) {
 
         this.currentAnimationDirection = AnimationDirection.RIGHT;
@@ -90,7 +88,7 @@ public class BackgroundSwitcherView extends ImageSwitcher {
         image.setImageDrawable(null);
         showNext();
 
-        if(imageUrl == null) return;
+        if (imageUrl == null) return;
 
         Picasso.get().load(imageUrl)
                 .noFade().noPlaceholder()
@@ -99,12 +97,15 @@ public class BackgroundSwitcherView extends ImageSwitcher {
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                         setImageBitmapWithAnimation(bitmap, currentAnimationDirection);
                     }
+
                     @Override
                     public void onBitmapFailed(Exception e, Drawable errorDrawable) {
                         System.out.println("@#@#@#@#@" + e.getMessage());
                     }
+
                     @Override
-                    public void onPrepareLoad(Drawable placeHolderDrawable) { }
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+                    }
                 });
     }
 
@@ -127,10 +128,12 @@ public class BackgroundSwitcherView extends ImageSwitcher {
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) { }
+            public void onAnimationCancel(Animator animation) {
+            }
 
             @Override
-            public void onAnimationRepeat(Animator animation) { }
+            public void onAnimationRepeat(Animator animation) {
+            }
         });
         showNext();
     }

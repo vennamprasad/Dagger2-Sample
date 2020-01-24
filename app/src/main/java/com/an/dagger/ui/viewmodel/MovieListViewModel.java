@@ -1,5 +1,7 @@
 package com.an.dagger.ui.viewmodel;
 
+import android.annotation.SuppressLint;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -37,6 +39,7 @@ public class MovieListViewModel extends ViewModel {
     /*
      * Method called by UI to fetch movies list
      * */
+    @SuppressLint("CheckResult")
     public void loadMoreMovies() {
         movieRepository.loadMoviesByType()
                 .subscribe(resource -> getMoviesLiveData().postValue(resource));

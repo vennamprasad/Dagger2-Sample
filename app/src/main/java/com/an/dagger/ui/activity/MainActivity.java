@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
      * Initialising the View using Data Binding
      * */
     private void initialiseView() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
         moviesListAdapter = new MoviesListAdapter(this);
         binding.moviesList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));

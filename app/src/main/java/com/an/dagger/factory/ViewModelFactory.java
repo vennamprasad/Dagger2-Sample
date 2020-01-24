@@ -3,6 +3,8 @@ package com.an.dagger.factory;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -15,12 +17,13 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     private final Map<Class<? extends ViewModel>, Provider<ViewModel>> creators;
 
     @Inject
-    public ViewModelFactory(Map<Class<? extends ViewModel>, Provider<ViewModel>> creators) {
+    ViewModelFactory(Map<Class<? extends ViewModel>, Provider<ViewModel>> creators) {
         this.creators = creators;
     }
 
+    @NotNull
     @Override
-    public <T extends ViewModel> T create(Class<T> modelClass) {
+    public <T extends ViewModel> T create(@NotNull Class<T> modelClass) {
         Provider<? extends ViewModel> creator = creators.get(modelClass);
         if (creator == null) {
             for (Map.Entry<Class<? extends ViewModel>, Provider<ViewModel>> entry : creators.entrySet()) {
